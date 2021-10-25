@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
     let productToUpdate = products.find((product) => product.id === id);
     products = products.find((product) => product.id !== id);
     productToUpdate.value = productToUpdate.value + lance;
-    productToUpdate.push(productToUpdate)
+    products.push(productToUpdate)
     io.emit('sendProducts', products);
   })
 });
