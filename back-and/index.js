@@ -4,8 +4,6 @@ const app = express();
 const http = require('http').createServer(app);
 let products = require('./products.js');
 
-const products = require('./products')
-
 const io = require('socket.io')(http, {
   cors: {
     origin: 'http://localhost:3000', // url aceita pelo cors
@@ -23,7 +21,7 @@ io.on('connection', (socket) => {
     let productToUpdate = products.find((product) => product.id === id);
     products = products.find((product) => product.id !== id);
     productToUpdate.value = productToUpdate.value + lance;
-    products.push(productToUpdate)
+    products.push(productToUpdate);
     io.emit('sendProducts', products);
   })
 });
@@ -34,10 +32,17 @@ getProductsSocket(io);
 
 app.use(cors(corsOptions));
 
-  app.get('/', (req, res) => {
-    res.status(200).json(products);
-  });
+app.get('/', (req, res) => {
+  res.status(200).json(products);
+});
 
+app.get('/test', (req, res) => {
+  let productToUpdate = products.find((product) => product.id === id);
+  products = products.find((product) => product.id !== id);
+  productToUpdate.value = productToUpdate.value + 1;
+  products.push(productToUpdate);
+  res.status(200).json(products);
+});
 
 http.listen(3000, () => {
   console.log('Servidor ouvindo na porta 3000');
