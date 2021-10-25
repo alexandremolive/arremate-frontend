@@ -1,9 +1,18 @@
 import React from 'react';
+import Card from './Card';
+import { ContainerCards } from '../styled-components/ContainerCards';
 
 
 function Products() {
+
+
   return (
-    <h1>Produtos</h1>
+    <div>
+      <h1>Produtos</h1>
+      <ContainerCards>
+        <Card />
+      </ContainerCards>
+    </div>
   );
 }
 

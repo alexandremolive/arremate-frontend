@@ -1,11 +1,15 @@
-import './App.css';
-
+import Products from './components/products';
+import { GlobalStyle } from './styled-components/globalStyle';
 
 function App() {
   return (
-    <div className="App">
-      <h1> Leilão de centavos R$</h1>
-    </div>
+    <>
+      <GlobalStyle />
+      <div>
+        <h1> Leilão de centavos R$</h1>
+        <Products />
+      </div>
+    </>
   );
 }
 
