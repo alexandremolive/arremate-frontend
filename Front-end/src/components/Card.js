@@ -6,27 +6,34 @@ const imagePath =
 
 function Card() {
   const [offerClicked, setOfferClicked] = useState(false);
+  const [lance, setLance] = useState('');
 
   const handleClick = () => {
     setOfferClicked(!offerClicked);
   };
 
-  console.log(offerClicked);
+  console.log(lance);
 
   return (
-    <StyledCard>
+    <StyledCard offerClicked={offerClicked}>
       <img src={imagePath} alt='' />
       <div>
         <p>
           <span>R$ 100.00</span> / <span>R$ 52.35</span>
         </p>
         <p>Notebook Lenovo Semi-novo</p>
-        {/* <div> */}
-          <input type='text' placeholder='Lance' />
+        <div>
           <button type='button' onClick={handleClick}>
-            OFERTAR
+            {offerClicked ? 'Ok' : 'OFERTAR'}
           </button>
-        {/* </div> */}
+          {offerClicked && (
+            <input
+              type='text'
+              placeholder='Lance'
+              onChange={({ target: { value } }) => setLance(value)}
+            />
+          )}
+        </div>
       </div>
     </StyledCard>
   );

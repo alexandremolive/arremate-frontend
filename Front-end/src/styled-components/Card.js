@@ -36,21 +36,44 @@ export const StyledCard = styled.div`
       }
     }
 
-    & button {
-      padding: 10px 30px;
-      justify-content: center;
-      font-weight: 600;
-      border: none;
-      background-color: #5754ff;
-      color: #fff;
-      font-size: 16px;
-      border-radius: 5px;
-    }
-
-    ${({ offerClicked }) => offerClicked && css``}
-
-    & input {
+    & div {
+      display: flex;
       width: 100%;
+      justify-content: center;
+      padding: 0 10px;
+
+      & button {
+        padding: 10px 30px;
+        font-weight: 600;
+        border: none;
+        background-color: #5754ff;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 5px;
+
+        ${({ offerClicked }) =>
+          offerClicked &&
+          css`
+            padding: 10px 5px;
+          `}
+      }
+
+      & input {
+        margin: 0 20px;
+        padding: 10px 0;
+        width: 100%;
+        max-width: 0;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.5);
+        transition: max-width 0.3s ease;
+
+        ${({ offerClicked }) =>
+          offerClicked &&
+          css`
+            padding: 10px 10px;
+            max-width: 200px;
+          `}
+      }
     }
   }
 `;
