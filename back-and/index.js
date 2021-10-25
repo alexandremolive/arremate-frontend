@@ -3,6 +3,8 @@ const cors = require('cors');
 const app = express();
 const http = require('http').createServer(app);
 
+const products = require('./products')
+
 const io = require('socket.io')(http, {
   cors: {
     origin: 'http://localhost:3000', // url aceita pelo cors
@@ -17,6 +19,10 @@ const io = require('socket.io')(http, {
   getProductsSocket(io);
   
   app.use(cors(corsOptions));
+
+  app.get('/', (req, res) => {
+    res.status(200).json(products);
+  });
 
 
 http.listen(3000, () => {
